@@ -22,7 +22,7 @@ namespace Business_Management_System.Controllers
     {
         BusinessEntities db = new BusinessEntities();
         Response response = new Response();
-        private string pdfPath = "E:\\";
+        private string pdfPath = "F:\\";
 
         [HttpPost, Route("generateReport")]
         [CustomAuthenticationFilter]
@@ -128,13 +128,18 @@ namespace Business_Management_System.Controllers
                         .SetTextAlignment(TextAlignment.CENTER)
                         .Add(new Paragraph(product["total"].ToString()));
 
-                    document.Add(table);
-
-                    //Footer
-                    Paragraph last = new Paragraph("Total " + bill.totalAmount + "\nThank you!");
-                    document.Add(last);
-                    document.Close();
+                    table.AddCell(nameCell);
+                    table.AddCell(categoryCell);
+                    table.AddCell(quantityCell);
+                    table.AddCell(priceCell);
+                    table.AddCell(totalCell);
                 }
+                document.Add(table);
+
+                //Footer
+                Paragraph last = new Paragraph("Total: " + bill.totalAmount + "\nThank you for visiting!");
+                document.Add(last);
+                document.Close();
             }
             catch (Exception e)
             {
