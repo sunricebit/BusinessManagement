@@ -1,9 +1,9 @@
 # BusinessManagement
-For FE:\n
-  install node js\n
-  install angular\n
-  install ngx-ui-loader\n
-  intall jwt decode\n
-  Recommend:\n
-    - Nodejs: 14.15.4\n
-    - Angular: 11.2.14\n
+For FE:
+  install node js
+  install angular
+  install ngx-ui-loader
+  intall jwt decode
+  Recommend:
+    - Nodejs: 14.15.4
+    - Angular: 11.2.14
