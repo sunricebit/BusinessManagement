@@ -13,6 +13,23 @@ import { SharedModule } from './shared/shared.module';
 import { FullComponent } from './layouts/full/full.component';
 import { AppHeaderComponent } from './layouts/full/header/header.component';
 import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './signup/signup.component';
+import { NgxUiLoaderConfig, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { LoginComponent } from './login/login.component';
+import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig={
+  text:"Loading...",
+  textColor:"#FFFFFF",
+  textPosition: "center-center",
+  bgsColor:"#24a894",
+  fgsColor:"#24a894",
+  fgsType:"square-loader",
+  fgsSize:100,
+  hasProgressBar:false
+}
 
 @NgModule({
   declarations: [	
@@ -21,7 +38,10 @@ import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
     BestSellerComponent,
     FullComponent,
     AppHeaderComponent,
-    AppSidebarComponent
+    AppSidebarComponent,
+    SignupComponent,
+    ForgotPasswordComponent,
+    LoginComponent
    ],
   imports: [
     BrowserModule,
@@ -31,9 +51,11 @@ import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
     ReactiveFormsModule,
     MaterialModule,
     FlexLayoutModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
-  providers: [],
+  providers: [HttpClientModule, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -75,7 +75,7 @@ namespace Business_Management_System.Controllers
                 document.Add(ls);
 
                 //Customer Details
-                Paragraph customerDetails = new Paragraph("Name" + bill.name + "\nEmail: " + bill.email + "\nContact Number: " + bill.contactNumber + "\nPayment Method:" + bill.paymentMethod);
+                Paragraph customerDetails = new Paragraph("Name: " + bill.name + "\nEmail: " + bill.email + "\nContact Number: " + bill.contactNumber + "\nPayment Method: " + bill.paymentMethod);
                 document.Add(customerDetails);
 
                 //Table
