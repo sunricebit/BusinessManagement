@@ -5,6 +5,7 @@ import { ManageCategoryComponent } from './manage-category/manage-category.compo
 import { ManageProductComponent } from './manage-product/manage-product.component';
 import { ManageOrderComponent } from './manage-order/manage-order.component';
 import { ViewBillComponent } from './view-bill/view-bill.component';
+import { ViewStatisticComponent } from './view-statistic/view-statistic.component';
 
 
 export const MaterialRoutes: Routes = [
@@ -38,6 +39,14 @@ export const MaterialRoutes: Routes = [
         canActivate:[RouteGuardService],
         data:{
             expectedRole:['admin', 'user']
+        }
+    },
+    {
+        path:'statistic',
+        component:ViewStatisticComponent,
+        canActivate:[RouteGuardService],
+        data:{
+            expectedRole:['admin']
         }
     }
 ];

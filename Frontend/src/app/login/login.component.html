@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row fxLayout="row">
-        <span>Login</span>
+        <span>Đăng nhập</span>
         <span class="spacer"></span>
         <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
             <mat-icon>close</mat-icon>
@@ -15,19 +15,19 @@
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email" required>
                 <mat-error *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
-                    <span *ngIf="loginForm.controls.email.errors.required">This field is mandatory.</span>
-                    <span *ngIf="loginForm.controls.email.errors.pattern">This field is invalid.</span>
+                    <span *ngIf="loginForm.controls.email.errors.required">Email không được để trống</span>
+                    <span *ngIf="loginForm.controls.email.errors.pattern">Email không hợp lệ</span>
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="standard" fxFlex>
-                <mat-label>Password</mat-label>
+                <mat-label>Mật khẩu</mat-label>
                 <input matInput formControlName="password" type="password" required [type]="hide ? 'password' : 'text'" >
                 <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
-                    <span *ngIf="loginForm.controls.password.errors.required">This field is mandatory.</span>
+                    <span *ngIf="loginForm.controls.password.errors.required">Mật khẩu được để trống</span>
                 </mat-error>
             </mat-form-field>
         </div>
@@ -36,7 +36,7 @@
 
 <mat-dialog-actions align="end">
     <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" [disabled]="!(loginForm.valid && loginForm.dirty)">
-        <mat-icon>login</mat-icon>Login
+        <mat-icon>login</mat-icon>Đăng nhập
     </button>
-    <button mat-raised-button color="warn" mat-dialog-close><mat-icon>cancel</mat-icon>Close</button>
+    <button mat-raised-button color="warn" mat-dialog-close><mat-icon>cancel</mat-icon>Đóng</button>
 </mat-dialog-actions>

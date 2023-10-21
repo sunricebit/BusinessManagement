@@ -22,7 +22,7 @@ namespace Business_Management_System.Controllers
     {
         BusinessEntities db = new BusinessEntities();
         Response response = new Response();
-        private string pdfPath = "F:\\";
+        private string pdfPath = "F:\\Bill\\";
 
         [HttpPost, Route("generateReport")]
         [CustomAuthenticationFilter]

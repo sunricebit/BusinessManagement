@@ -7,6 +7,10 @@ import { GlobalContants } from 'src/app/shared/global-constants';
 import { ProductService } from 'src/app/services/product.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { saveAs } from 'file-saver';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { QrcodeService } from 'src/app/services/qrcode.service';
+import { ViewQrcodeComponent } from '../dialog/view-qrcode/view-qrcode.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-order',
@@ -29,7 +33,10 @@ export class ManageOrderComponent implements OnInit {
     private productService:ProductService,
     private snackbarService:SnackbarService,
     private billService:BillService,
-    private ngxService:NgxUiLoaderService) { }
+    private genQrService:QrcodeService,
+    private router: Router,
+    private dialog: MatDialog,
+    private ngxService:NgxUiLoaderService,) { }
 
   ngOnInit(): void {
     this.ngxService.start();
@@ -161,6 +168,40 @@ export class ManageOrderComponent implements OnInit {
       productDetails: JSON.stringify(this.dataSource)
     }
 
+    if (formData.paymentMethod == 'QRCode'){
+      var qrData ={
+        accountNo: '8850193456666',
+        accountName: 'PHAM QUOC HUNG',
+        acqId: '970422',
+        addInfo: 'KHACK HANG THANH TOAN',
+        amount: this.totalAmount,
+        template: 'compact'
+      }
+
+      this.ngxService.start();
+      this.genQrService.getQrBase64(qrData).subscribe((response: any) =>{
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = {
+          imageUrl: response.data.qrDataURL
+        };
+
+        dialogConfig.width = "100%";
+        const dialogRef = this.dialog.open(ViewQrcodeComponent, dialogConfig);
+        this.router.events.subscribe(() =>{
+          dialogRef.close();
+        })
+      },(error:any) =>{
+        this.ngxService.stop();
+        console.log(error);
+        if(error.error?.message){
+          this.responseMessage = error.error?.message;
+        }else{
+          this.responseMessage = GlobalContants.genericError;
+        }
+        this.snackbarService.openSnackBar(this.responseMessage, GlobalContants.error);
+      })
+    }
+
     this.ngxService.start();
     this.billService.generateReport(data).subscribe((response:any) =>{
       this.downloadFile(response.uuid);
@@ -188,5 +229,9 @@ export class ManageOrderComponent implements OnInit {
       saveAs(response, fileName + '.pdf');
       this.ngxService.stop();
     })
+  }
+
+  generateQr(data:any){
+
   }
 }

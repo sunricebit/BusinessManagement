@@ -11,10 +11,11 @@ export interface Menu{
 
 const MENUITEMS =[
     {state:'dashboard', name:'Dashboard', type:'link', icon:'dashboard',role:''},
-    {state:'category', name:'Manage Category', type:'link', icon:'category',role:'admin'},
-    {state:'product', name:'Manage Product', type:'link', icon:'inventory',role:'admin'},
-    {state:'order', name:'Manage Order', type:'link', icon:'shopping_cart',role:''},
-    {state:'bill', name:'View Bill', type:'link', icon:'backup_table',role:''}
+    {state:'category', name:'Quản lý phân loại', type:'link', icon:'category',role:'admin'},
+    {state:'product', name:'Quản lý sản phẩm', type:'link', icon:'inventory',role:'admin'},
+    {state:'order', name:'Quản lý đơn hàng', type:'link', icon:'shopping_cart',role:''},
+    {state:'bill', name:'Xem hóa đơn', type:'link', icon:'backup_table',role:''},
+    {state:'statistic', name:'Xem thống kê', type:'link', icon:'bar_chart',role:'admin'}
 ]
 
 @Injectable()

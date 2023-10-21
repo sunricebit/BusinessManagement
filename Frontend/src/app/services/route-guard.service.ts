@@ -37,7 +37,6 @@ export class RouteGuardService {
       }
 
       if(tokenPayLoad.role == 'user' || tokenPayLoad.role == 'admin'){
-        console.log('den day roi');
         if (this.auth.isAuthenticated() && tokenPayLoad.role == expectedRole){
           return true;
         }

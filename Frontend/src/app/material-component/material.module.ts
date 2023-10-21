@@ -18,6 +18,8 @@ import { ManageProductComponent } from './manage-product/manage-product.componen
 import { ProductComponent } from './dialog/product/product.component';
 import { ManageOrderComponent } from './manage-order/manage-order.component';
 import { ViewBillComponent } from './view-bill/view-bill.component';
+import { ViewStatisticComponent } from './view-statistic/view-statistic.component';
+import { ViewQrcodeComponent } from './dialog/view-qrcode/view-qrcode.component';
 
 @NgModule({
   imports: [
@@ -40,7 +42,9 @@ import { ViewBillComponent } from './view-bill/view-bill.component';
     ManageProductComponent,
     ProductComponent,
     ManageOrderComponent,
-    ViewBillComponent
+    ViewBillComponent,
+    ViewStatisticComponent,
+    ViewQrcodeComponent
   ]
 })
 export class MaterialComponentsModule {}
