@@ -20,5 +20,6 @@ namespace Business_Management_System.Models
         public string description { get; set; }
         public Nullable<int> price { get; set; }
         public string status { get; set; }
+        public Nullable<int> quantity { get; set; }
     }
 }

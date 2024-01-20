@@ -27,6 +27,7 @@ export class ManageOrderComponent implements OnInit {
   price:any;
   totalAmount:number = 0;
   responseMessage:any;
+  product:any;
 
   constructor(private formBuilder:FormBuilder,
     private categoryService:CategoryService,
@@ -92,8 +93,12 @@ export class ManageOrderComponent implements OnInit {
     this.productService.getById(value.id).subscribe((response:any) => {
       this.price = response.price;
       this.manageOrderForm.controls['price'].setValue(response.price);
-      this.manageOrderForm.controls['quantity'].setValue('1');
+      this.manageOrderForm.controls['quantity'].setValue('0');
       this.manageOrderForm.controls['total'].setValue(this.price * 1);
+      this.product = response;
+      if (this.product.quantity == 0){
+        this.snackbarService.openSnackBar("Hết hàng", "success");
+      }
     }, (error:any) =>{
       this.ngxService.stop();
       console.log(error);
@@ -109,12 +114,20 @@ export class ManageOrderComponent implements OnInit {
   setQuantity(value:any){
     var temp = this.manageOrderForm.controls['quantity'].value;
     if(temp > 0){
-      this.manageOrderForm.controls['total'].setValue(this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value);
+      if (temp > this.product.quantity){
+        this.snackbarService.openSnackBar("Không thể mua nhiều hơn số lượng trong kho", GlobalContants.error);
+        this.manageOrderForm.controls['quantity'].setValue(this.product.quantity);
+        this.manageOrderForm.controls['total'].setValue(this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value);
+      }
+      else{
+        this.manageOrderForm.controls['total'].setValue(this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value);
+      }
     }
     else if(temp != ''){
-      this.manageOrderForm.controls['quantity'].setValue('1');
+      this.manageOrderForm.controls['quantity'].setValue('0');
       this.manageOrderForm.controls['total'].setValue(this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value);
     }
+    
   }
 
   validateProductAdd(){
@@ -170,8 +183,8 @@ export class ManageOrderComponent implements OnInit {
 
     if (formData.paymentMethod == 'QRCode'){
       var qrData ={
-        accountNo: '8850193456666',
-        accountName: 'PHAM QUOC HUNG',
+        accountNo: '9990130112002',
+        accountName: 'VU DUC DUY',
         acqId: '970422',
         addInfo: 'KHACK HANG THANH TOAN',
         amount: this.totalAmount,

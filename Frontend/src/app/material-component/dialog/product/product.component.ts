@@ -33,6 +33,7 @@ export class ProductComponent implements OnInit {
       name:[null, [Validators.required, Validators.pattern(GlobalContants.nameRegex)]],
       categoryId:[null,[Validators.required]],
       price:[null,[Validators.required]],
+      quantity:[null, [Validators.required]],
       description:[null,[Validators.required]]
     });
 
@@ -75,6 +76,7 @@ export class ProductComponent implements OnInit {
       name: formData.name,
       categoryId:formData.categoryId,
       price:formData.price,
+      quantity:formData.quantity,
       description:formData.description
     }
 
@@ -103,6 +105,7 @@ export class ProductComponent implements OnInit {
       name: formData.name,
       categoryId:formData.categoryId,
       price:formData.price,
+      quantity:formData.quantity,
       description:formData.description
     }
 

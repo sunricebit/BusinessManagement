@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\CODE\C#\Business_Management_System\Models\BusinessEntities.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\FPT UNIVERSITY\Kỳ_8_FA23\EXE201\MVP\Business_Management_System\Models\BusinessEntities.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

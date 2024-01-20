@@ -51,6 +51,7 @@ namespace Business_Management_System.Controllers
                              {
                                  Products.id,
                                  Products.name,
+                                 Products.quantity,
                                  Products.description,
                                  Products.price,
                                  Products.status,
@@ -120,6 +121,7 @@ namespace Business_Management_System.Controllers
                 productObj.name = product.name;
                 productObj.description = product.description;
                 productObj.price = product.price;
+                productObj.quantity = product.quantity;
                 productObj.categoryId = product.categoryId;
                 db.Entry(productObj).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();

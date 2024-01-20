@@ -26,18 +26,19 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
     <Property Name="categoryId" Type="int" />
-    <Property Name="description" Type="varchar" MaxLength="255" />
+    <Property Name="description" Type="nvarchar" MaxLength="255" />
     <Property Name="price" Type="int" />
     <Property Name="status" Type="varchar" MaxLength="20" />
+    <Property Name="quantity" Type="int" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="250" />
+    <Property Name="name" Type="nvarchar" MaxLength="250" />
     <Property Name="contactNumber" Type="varchar" MaxLength="20" />
     <Property Name="email" Type="varchar" MaxLength="50" />
     <Property Name="password" Type="varchar" MaxLength="250" />

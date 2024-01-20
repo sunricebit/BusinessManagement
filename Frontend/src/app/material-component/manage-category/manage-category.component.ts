@@ -49,6 +49,7 @@ export class ManageCategoryComponent implements OnInit {
 
   applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
+    console.log(filterValue);
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 

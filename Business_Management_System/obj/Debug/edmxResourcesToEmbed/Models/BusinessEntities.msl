@@ -25,6 +25,7 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="BusinessModel.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="description" ColumnName="description" />
